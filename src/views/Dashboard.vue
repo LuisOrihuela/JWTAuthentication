@@ -69,7 +69,7 @@
             <b-form-select id="input-3" :options="autoserv"></b-form-select>
             </b-form-group>
 
-            <b-form-group id="input-group-3" label="Papelierías:" label-for="input-3">
+            <b-form-group id="input-group-3" label="Papelerías:" label-for="input-3">
             <b-form-select id="input-3" :options="depots"></b-form-select>
             </b-form-group>
 
