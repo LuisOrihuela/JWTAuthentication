@@ -15,7 +15,7 @@
         <b-button @click="toggleView('facturar')" type="submit" variant="primary">Facturar</b-button >
         </p>
         <p>
-        <b-button @click="toggleView('nuevo')">Nuevo registro</b-button >
+        <!-- <b-button @click="toggleView('nuevo')">Nuevo registro</b-button > -->
         </p>
         <p>
         <b-button @click="toggleView('lista')">Lista de facturas</b-button >
@@ -95,9 +95,9 @@
       </div>
     </div>
     <!-- componente nuevos registros -->
-    <div v-if="verAlta">
+    <!-- <div v-if="verAlta">
     <Nuevosrec/>
-    </div>
+    </div> -->
   </div>
     
   </div>
@@ -150,7 +150,7 @@ export default {
       const userString = JSON.parse(localStorage.getItem('user'))
       console.log("ID:", userString.id)
       this.userId = userString.id
-      axios.get('//localhost:3000/dashboard/'+userString.id).then(({ data }) => {
+      axios.get('https://facturatron-backend.herokuapp.com/dashboard/'+userString.id).then(({ data }) => {
       // this.events = data.events
       console.log(data);
       this.name = data[0].name;
@@ -187,7 +187,7 @@ export default {
       this.decodedContent = content;
       this.successMessage = 'Factura generada! Agradecemos su preferencia.'
       console.log(this.decodedContent)
-      axios.get('//localhost:3000/tickets/'+this.decodedContent)
+      axios.get('https://facturatron-backend.herokuapp.com/tickets/'+this.decodedContent)
         .then((ticket, err)=>{
           if(err){
             console.log(err)
@@ -195,7 +195,7 @@ export default {
             const newTicket = ticket.data[0]
             this.tickets.push(ticket.data[0])
             console.log(ticket.data[0]) 
-            axios.put('//localhost:3000/agregar-factura/'+this.userId, newTicket)
+            axios.put('https://facturatron-backend.herokuapp.com/agregar-factura/'+this.userId, newTicket)
             this.newScan = !this.newScan;
             this.toggleView('lista')           
           }          

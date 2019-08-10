@@ -165,7 +165,7 @@ export default {
     }
   },
   created() {
-    axios.get('//localhost:3000/dashboard').then(({ data }) => {
+    axios.get('https://facturatron-backend.herokuapp.com/dashboard').then(({ data }) => {
       this.events = data.events
       console.log(data.events)
       this.isLoading = false
